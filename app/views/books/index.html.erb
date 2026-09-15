@@ -1,3 +1,5 @@
+<p style="color: green"><%= notice %></p>
+
 <h1>Books</h1>
 
 <%= link_to "New Book", new_book_path %>
@@ -9,7 +11,7 @@
       (<%= number_to_currency(book.price) %>, <%= book.published_date %>)
       <%= link_to "Show", book %>
       <%= link_to "Edit", edit_book_path(book) %>
-      <%= link_to "Delete", delete_book_path(book) %>
+      <%= button_to "Delete", book, method: :delete %>
     </li>
   <% end %>
 </ul>
