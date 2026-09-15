@@ -19,4 +19,14 @@ RSpec.describe "Books", type: :request do
     expect(response).to have_http_status(:unprocessable_entity)
     expect(flash[:notice]).to be_nil
   end
+
+  it "shows the delete confirmation page for a book" do
+    book = Book.create!(title: "Delete Me")
+
+    get delete_book_path(book)
+
+    expect(response).to have_http_status(:ok)
+    expect(response.body).to include("Delete Book")
+    expect(response.body).to include("Delete Me")
+  end
 end
