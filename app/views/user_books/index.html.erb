@@ -4,14 +4,26 @@
 
 <h1>User Books</h1>
 
-<div id="user_books">
+<table id="user_books">
+  <thead>
+    <tr>
+      <th>Username</th>
+      <th>Book Title</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
   <% @user_books.each do |user_book| %>
-    <%= render user_book %>
-    <p>
-      <%= link_to "Show this user book", user_book %>
-    </p>
+    <tr>
+      <td><%= user_book.user.username %></td>
+      <td><%= user_book.book.title %></td>
+      <td><%= link_to "Show", user_book %></td>
+      <td><%= link_to "Edit", edit_user_book_path(user_book) %></td>
+      <td><%= button_to "Destroy", user_book, method: :delete %></td>
+    </tr>
   <% end %>
-</div>
+  </tbody>
+</table>
 
 <%= link_to "New User Book", new_user_book_path %>
 <%= link_to "Books", books_path %>
