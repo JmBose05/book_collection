@@ -1,14 +1,11 @@
 class BooksController < ApplicationController
-  before_action :set_book, only: %i[show edit update destroy delete]
+  before_action :set_book, only: %i[show edit update destroy]
 
   def index
     @books = Book.all
   end
 
   def show
-  end
-
-  def delete
   end
 
   def new
@@ -22,7 +19,7 @@ class BooksController < ApplicationController
     @book = Book.new(book_params)
 
     if @book.save
-      redirect_to @book, notice: "Book was successfully created."
+      redirect_to books_path, notice: "Book was successfully created."
     else
       flash.now[:alert] = "Book could not be created."
       render :new, status: :unprocessable_entity
@@ -31,7 +28,7 @@ class BooksController < ApplicationController
 
   def update
     if @book.update(book_params)
-      redirect_to @book, notice: "Book was successfully updated."
+      redirect_to books_path, notice: "Book was successfully updated."
     else
       flash.now[:alert] = "Book could not be updated."
       render :edit, status: :unprocessable_entity
