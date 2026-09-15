@@ -1,15 +1,12 @@
 <h1>Books</h1>
 
-<% if notice %>
-  <p><strong><%= notice %></strong></p>
-<% end %>
-
 <%= link_to "New Book", new_book_path %>
 
 <ul>
   <% @books.each do |book| %>
     <li>
-      <%= book.title %>
+      <strong><%= book.title %></strong> by <%= book.author %>
+      (<%= number_to_currency(book.price) %>, <%= book.published_date %>)
       <%= link_to "Show", book %>
       <%= link_to "Edit", edit_book_path(book) %>
       <%= link_to "Delete", delete_book_path(book) %>

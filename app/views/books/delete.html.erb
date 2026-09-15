@@ -2,7 +2,8 @@
 
 <p>Are you sure you want to delete the following book?</p>
 
-<p><strong><%= @book.title %></strong></p>
+<p><strong><%= @book.title %></strong> by <%= @book.author %></p>
+<p><%= number_to_currency(@book.price) %>, published <%= @book.published_date %></p>
 
 <%= button_to "Delete Book", @book, method: :delete %>
 <%= link_to "Back to Books", books_path %>
