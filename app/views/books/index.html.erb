@@ -1,0 +1,18 @@
+<h1>Books</h1>
+
+<% if notice %>
+  <p><strong><%= notice %></strong></p>
+<% end %>
+
+<%= link_to "New Book", new_book_path %>
+
+<ul>
+  <% @books.each do |book| %>
+    <li>
+      <%= book.title %>
+      <%= link_to "Show", book %>
+      <%= link_to "Edit", edit_book_path(book) %>
+      <%= button_to "Delete", book, method: :delete, form: { data: { turbo_confirm: "Are you sure?" } } %>
+    </li>
+  <% end %>
+</ul>
